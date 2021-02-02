@@ -25,14 +25,9 @@ public class TaskThreadWithLock extends Thread{
 
     @Override
     public void run() {
+        taskResult.setRes(Fibonacci.sum());
         try {
             lock.lock();
-            try {
-                TimeUnit.SECONDS.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            taskResult.setRes(Fibonacci.sum());
             fibCond.signalAll();
         } finally {
             lock.unlock();

@@ -17,8 +17,8 @@ public class TaskThreadWithNotify extends Thread{
 
     @Override
     public void run() {
+        taskResult.setRes(Fibonacci.sum());
         synchronized (locker) {
-            taskResult.setRes(Fibonacci.sum());
             locker.notifyAll();
         }
     }
