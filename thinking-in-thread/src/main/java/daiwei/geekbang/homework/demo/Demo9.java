@@ -4,32 +4,24 @@ import daiwei.geekbang.homework.common.Fibonacci;
 import daiwei.geekbang.homework.common.TaskResult;
 import daiwei.geekbang.homework.common.TaskRunnable;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * future - submit runnable
+ * CompletableFuture 杀鸡用牛刀
  * Created by Daiwei on 2021/2/1
  */
-public class Demo8 {
-
-    private static final int CORE = 1;
+public class Demo9 {
 
     public static void main(String[] args) throws Exception {
 
         long start = System.currentTimeMillis();
 
-        ExecutorService service = Executors.newFixedThreadPool(CORE);
+        CompletableFuture<Integer> calc = CompletableFuture.supplyAsync(Fibonacci::sum);
 
-        TaskResult res = new TaskResult();
-        Future<TaskResult> future = service.submit(new TaskRunnable(res), res);
-        TaskResult taskResult = future.get();
-
-        Integer result = taskResult.getRes();
-        service.shutdown();
-
-        System.out.println("异步计算结果为："+ result);
+        System.out.println("异步计算结果为："+ calc.join());
 
         System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
 

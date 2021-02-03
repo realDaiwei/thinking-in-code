@@ -22,7 +22,7 @@ public class Demo6 {
 
     private static final int core = 1;
 
-    private static final long TIMEOUT = 10L;
+    private static final long TIMEOUT = 100L;
 
     public static void main(String[] args) throws Exception {
 
@@ -46,11 +46,11 @@ public class Demo6 {
             }
         } finally {
             lock.unlock();
+            service.shutdown();
         }
 
         Integer result = res.getRes();
 
-        service.shutdown();
         System.out.println("异步计算结果为："+ result);
 
         System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");

@@ -11,7 +11,7 @@ public class Demo3 {
 
     public static void main(String[] args) throws Exception {
 
-        long start=System.currentTimeMillis();
+        long start = System.currentTimeMillis();
 
         TaskResult res = new TaskResult();
 
