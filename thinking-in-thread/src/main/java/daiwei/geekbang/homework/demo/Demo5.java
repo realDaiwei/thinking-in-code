@@ -24,12 +24,12 @@ public class Demo5 {
 
         ExecutorService service = Executors.newFixedThreadPool(core);
         service.execute(new TaskThreadWithNotify(res, locker));
-
         synchronized (locker) {
             while (!res.isDone()) {
                 locker.wait();
             }
         }
+
 
         Integer result = res.getRes();
 

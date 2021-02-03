@@ -48,7 +48,6 @@ public class Demo6 {
             lock.unlock();
             service.shutdown();
         }
-
         Integer result = res.getRes();
 
         System.out.println("异步计算结果为："+ result);
