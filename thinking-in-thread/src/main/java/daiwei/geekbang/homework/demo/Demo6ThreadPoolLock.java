@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * executorPool + lock
  * Created by Daiwei on 2021/2/1
  */
-public class Demo6 {
+public class Demo6ThreadPoolLock {
 
     private static final ReentrantLock lock = new ReentrantLock();
 

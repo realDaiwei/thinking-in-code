@@ -1,13 +1,16 @@
 package daiwei.geekbang.homework.demo;
 
+import daiwei.geekbang.homework.common.Fibonacci;
 import daiwei.geekbang.homework.common.TaskResult;
-import daiwei.geekbang.homework.common.TaskThread;
+import daiwei.geekbang.homework.common.TaskRunnable;
+
+import java.util.concurrent.TimeUnit;
 
 /**
- * thread + join
+ * runnable + sleep
  * Created by Daiwei on 2021/2/1
  */
-public class Demo3 {
+public class Demo1RunnableSleep {
 
     public static void main(String[] args) throws Exception {
 
@@ -15,12 +18,10 @@ public class Demo3 {
 
         TaskResult res = new TaskResult();
 
-        TaskThread taskThread = new TaskThread(res);
+        new Thread(new TaskRunnable(res)).run();
 
-        taskThread.start();
-
-        // 使用 join 阻塞当前线程
-        taskThread.join();
+        // sleep 100ms 确保拿到了数据
+        TimeUnit.MILLISECONDS.sleep(100);
 
         Integer result = res.getRes();
 
@@ -30,4 +31,11 @@ public class Demo3 {
 
         // 然后退出main线程
     }
+
+
+
+
+
+
+
 }

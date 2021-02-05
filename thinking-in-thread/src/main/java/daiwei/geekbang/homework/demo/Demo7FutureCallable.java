@@ -3,25 +3,31 @@ package daiwei.geekbang.homework.demo;
 import daiwei.geekbang.homework.common.Fibonacci;
 import daiwei.geekbang.homework.common.TaskResult;
 import daiwei.geekbang.homework.common.TaskRunnable;
+import daiwei.geekbang.homework.common.TaskThreadWithNotify;
 
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * CompletableFuture 杀鸡用牛刀
+ * future - submit callable
  * Created by Daiwei on 2021/2/1
  */
-public class Demo9 {
+public class Demo7FutureCallable {
+
+    private static final int core = 1;
 
     public static void main(String[] args) throws Exception {
 
         long start = System.currentTimeMillis();
 
-        CompletableFuture<Integer> calc = CompletableFuture.supplyAsync(Fibonacci::sum);
+        ExecutorService service = Executors.newFixedThreadPool(core);
+        Future<Integer> future = service.submit(Fibonacci::sum);
+        Integer result = future.get();
+        service.shutdown();
 
-        System.out.println("异步计算结果为："+ calc.join());
+        System.out.println("异步计算结果为："+ result);
 
         System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
 

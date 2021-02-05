@@ -6,12 +6,12 @@ import daiwei.geekbang.homework.common.TaskResult;
 import java.util.concurrent.*;
 
 /**
- * CyclicBarrier
+ * Phaser
  * Created by Daiwei on 2021/2/1
  */
-public class Demo13 {
+public class Demo14Phaser {
 
-    private static final int CORE = 1;
+    private static final int CORE = 2;
 
     public static void main(String[] args) throws Exception {
 
@@ -21,23 +21,25 @@ public class Demo13 {
 
         TaskResult taskResult = new TaskResult();
 
-        CyclicBarrier barrier = new CyclicBarrier(1, () -> {
+        Phaser phaser = new Phaser(0) {
 
-            Integer result = taskResult.getRes();
+            @Override
+            protected boolean onAdvance(int phase, int registeredParties) {
 
-            System.out.println("异步计算结果为："+ result);
+                Integer result = taskResult.getRes();
 
-            System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
+                System.out.println("异步计算结果为："+ result);
 
-        });
+                System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
+
+                return true;
+            }
+        };
 
         executor.execute(() -> {
+            phaser.register();
             taskResult.setRes(Fibonacci.sum());
-            try {
-                barrier.await();
-            } catch (InterruptedException | BrokenBarrierException e) {
-                e.printStackTrace();
-            }
+            phaser.arriveAndAwaitAdvance();
         });
 
         executor.shutdown();

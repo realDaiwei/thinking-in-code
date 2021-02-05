@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  * blockingQueue
  * Created by Daiwei on 2021/2/1
  */
-public class Demo15 {
+public class Demo15BlockingQueue {
 
     private static final int CORE = 1;
 

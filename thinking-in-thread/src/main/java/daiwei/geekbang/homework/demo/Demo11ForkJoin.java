@@ -8,7 +8,7 @@ import java.util.concurrent.*;
  * 花里胡哨的 forkJoin
  * Created by Daiwei on 2021/2/1
  */
-public class Demo11 {
+public class Demo11ForkJoin {
 
     private static final int CORE = 1;
 

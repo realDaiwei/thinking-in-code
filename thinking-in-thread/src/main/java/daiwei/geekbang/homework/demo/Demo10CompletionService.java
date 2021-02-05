@@ -8,7 +8,7 @@ import java.util.concurrent.*;
  * CompletionService 杀鸡用屠龙刀
  * Created by Daiwei on 2021/2/1
  */
-public class Demo10 {
+public class Demo10CompletionService {
 
     private static final int CORE = 1;
 

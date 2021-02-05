@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * thread + loopCheck
  * Created by Daiwei on 2021/2/1
  */
-public class Demo2 {
+public class Demo2ThreadLoopCheck {
 
     public static void main(String[] args) throws Exception {
 
