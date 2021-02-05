@@ -40,8 +40,6 @@ public class Demo13 {
             }
         });
 
-
-
         executor.shutdown();
         // 然后退出main线程
     }
