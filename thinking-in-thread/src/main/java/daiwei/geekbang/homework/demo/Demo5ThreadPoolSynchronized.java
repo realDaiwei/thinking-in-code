@@ -23,7 +23,7 @@ public class Demo5ThreadPoolSynchronized {
         TaskResult res = new TaskResult();
 
         ExecutorService service = Executors.newFixedThreadPool(core);
-        service.execute(new TaskThreadWithNotify(res, locker));
+        service.submit(new TaskThreadWithNotify(res, locker));
         synchronized (locker) {
             while (!res.isDone()) {
                 locker.wait();

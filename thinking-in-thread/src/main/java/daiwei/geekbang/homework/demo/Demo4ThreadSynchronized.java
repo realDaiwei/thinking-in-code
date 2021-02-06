@@ -12,6 +12,8 @@ public class Demo4ThreadSynchronized {
 
     private static final Object locker = new Object();
 
+    private static final long ONE_SEC_MILLI = 1000;
+
     public static void main(String[] args) throws Exception {
 
         long start = System.currentTimeMillis();
@@ -25,7 +27,7 @@ public class Demo4ThreadSynchronized {
         //同步块 + wait & notify
         synchronized (locker) {
             while (!res.isDone()) {
-                locker.wait();
+                locker.wait(ONE_SEC_MILLI);
             }
         }
 
