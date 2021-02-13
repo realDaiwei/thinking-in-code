@@ -1,4 +1,4 @@
-package io.daiwei.common;
+package io.daiwei.proxy.common;
 
 /**
  * Created by Daiwei on 2021/2/12

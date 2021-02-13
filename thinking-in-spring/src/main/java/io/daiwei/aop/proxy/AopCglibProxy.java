@@ -94,9 +94,7 @@ public class AopCglibProxy implements MethodInterceptor {
             log.error("method["+ methodStr +"] not find!", e);
         } catch (IllegalAccessException e) {
             log.error("plz set invoke method public", e);
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (InvocationTargetException | InstantiationException e) {
             e.printStackTrace();
         }
     }

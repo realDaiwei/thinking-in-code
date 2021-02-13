@@ -1,6 +1,6 @@
 package io.daiwei.proxy.jdk;
 
-import io.daiwei.common.User;
+import io.daiwei.proxy.common.User;
 import lombok.extern.log4j.Log4j;
 
 import java.lang.reflect.InvocationHandler;

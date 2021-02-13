@@ -1,13 +1,9 @@
 package io.daiwei.proxy;
 
-import io.daiwei.common.User;
-import io.daiwei.common.UserImpl;
+import io.daiwei.proxy.common.User;
+import io.daiwei.proxy.common.UserImpl;
 import io.daiwei.proxy.cglib.UserCglibProxy;
-import io.daiwei.proxy.jdk.UserJDKProxy;
 import lombok.extern.log4j.Log4j;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
 
 /**
  * Created by Daiwei on 2021/2/12

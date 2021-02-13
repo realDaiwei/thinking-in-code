@@ -1,7 +1,7 @@
-package io.daiwei.common;
+package io.daiwei.proxy.common;
 
 import io.daiwei.aop.annotation.AopBefore;
-import io.daiwei.common.User;
+import io.daiwei.proxy.common.User;
 import lombok.extern.log4j.Log4j;
 
 /**
