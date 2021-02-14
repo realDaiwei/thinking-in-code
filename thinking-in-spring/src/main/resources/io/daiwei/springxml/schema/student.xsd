@@ -8,11 +8,12 @@
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
 
     <xsd:complexType name="Student">
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
         <xsd:attribute name="stuName" type="xsd:string" use="required"/>
         <xsd:attribute name="stuAddr" type="xsd:string"/>
         <xsd:attribute name="stuId" type="xsd:long" use="required"/>
     </xsd:complexType>
 
     <xsd:element name="student" type="Student"/>
-    
+
 </xsd:schema>

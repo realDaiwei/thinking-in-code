@@ -7,5 +7,6 @@
         http://spring.daiwei.io/schema/student
         http://spring.daiwei.io/schema/student.xsd">
 
-    <stu:student stuId="1" stuAddr="red keep in king's landing" stuName="hello"/>
+    <stu:student id="stu-daiwei" stuId="1" stuAddr="red keep in king's landing" stuName="daiwei"/>
+
 </beans>
