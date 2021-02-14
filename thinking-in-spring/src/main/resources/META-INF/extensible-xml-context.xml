@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:stu="http://spring.daiwei.io/schema/student"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://spring.daiwei.io/schema/student
+        http://spring.daiwei.io/schema/student.xsd">
+
+    <stu:student stuId="1" stuAddr="red keep in king's landing" stuName="hello"/>
+</beans>
