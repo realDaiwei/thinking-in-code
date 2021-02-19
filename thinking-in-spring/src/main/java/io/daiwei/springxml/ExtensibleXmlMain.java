@@ -1,9 +1,11 @@
 package io.daiwei.springxml;
 
-import io.daiwei.springxml.entity.Student;
+import io.daiwei.entity.School;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+
+import java.util.Arrays;
 
 /**
  * Created by Daiwei on 2021/2/14
@@ -18,8 +20,11 @@ public class ExtensibleXmlMain {
 
         reader.loadBeanDefinitions("META-INF/extensible-xml-context.xml");
 
-        Student stu = beanFactory.getBean(Student.class);
+        String[] names = beanFactory.getBeanDefinitionNames();
+        log.info("beans in context -" + Arrays.toString(names));
 
-        log.info(stu);
+        School school = beanFactory.getBean("game-of-thrones", School.class);
+
+        school.ding();
     }
 }

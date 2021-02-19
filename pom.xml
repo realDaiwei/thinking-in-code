@@ -11,14 +11,18 @@
     <modules>
         <module>thinking-in-netty</module>
         <module>thinking-in-thread</module>
+        <module>thinking-in-spring</module>
+        <module>thinking-in-spring-entity</module>
     </modules>
 
     <properties>
         <lombok.version>1.18.10</lombok.version>
         <netty.version>4.1.51.Final</netty.version>
-        <log.version>2.12.1</log.version>
+        <log.version>1.2.17</log.version>
         <httpClient.version>4.5.12</httpClient.version>
         <httpAsynClient.versioin>4.1.4</httpAsynClient.versioin>
+        <cglib.version>3.2.4</cglib.version>
+        <spring.version>5.2.8.RELEASE</spring.version>
     </properties>
 
     <dependencyManagement>
@@ -38,6 +42,43 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpasyncclient</artifactId>
                 <version>${httpAsynClient.versioin}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
