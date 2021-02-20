@@ -4,6 +4,7 @@ import io.daiwei.jdbc.pojo.User;
 import io.daiwei.jdbc.util.JdbcUtil;
 
 import java.sql.*;
+import java.util.List;
 
 /**
  * Created by Daiwei on 2021/2/20
@@ -36,7 +37,34 @@ public class JdbcPreStateTest {
     }
 
     /**
-     * 修改User
+     * 批处理
+     * @param list
+     */
+    public static void insertBatch(List<User> list) {
+        Connection conn = null;
+        PreparedStatement stat = null;
+        try {
+            conn = JdbcUtil.getConnFromHikari();
+            conn.setAutoCommit(false);
+            String sql = "insert into user(username, age, addr) values(?, ?, ?)";
+            stat = conn.prepareStatement(sql);
+            for (User user : list) {
+                stat.setString(1, user.getUsername());
+                stat.setInt(2, user.getAge());
+                stat.setString(3, user.getAddr());
+                stat.addBatch();
+            }
+            stat.executeBatch();
+            conn.commit();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            JdbcUtil.release(conn, stat, null);
+        }
+    }
+
+    /**
+     * 修改User 事务操作
      * @param user
      */
     public static void updateUser(User user) {
@@ -44,6 +72,9 @@ public class JdbcPreStateTest {
         PreparedStatement stat = null;
         try {
 //            conn = JdbcUtil.getConnection();
+//          开启事务
+            conn.setAutoCommit(false);
+            // 第一个更新
             conn = JdbcUtil.getConnFromHikari();
             String sql = "update user set username=?, age=?, addr=? where id =?";
             stat = conn.prepareStatement(sql);
@@ -52,6 +83,16 @@ public class JdbcPreStateTest {
             stat.setString(3, user.getAddr());
             stat.setLong(4, user.getId());
             stat.execute();
+            // 第二个更新
+            sql = "update user set username=?, age=?, addr=? where id =?";
+            stat = conn.prepareStatement(sql);
+            stat.setString(1, user.getUsername());
+            stat.setInt(2, user.getAge());
+            stat.setString(3, user.getAddr());
+            stat.setLong(4, 2L);
+            stat.execute();
+//            提交事务
+            conn.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
