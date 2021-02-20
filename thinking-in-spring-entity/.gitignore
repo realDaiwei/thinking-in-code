@@ -3,6 +3,8 @@
 # Compiled class file
 *.class
 target/
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 # Log file
 *.log
