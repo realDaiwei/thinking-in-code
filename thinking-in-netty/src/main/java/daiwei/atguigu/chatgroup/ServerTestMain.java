@@ -1,6 +1,6 @@
 package daiwei.atguigu.chatgroup;
 
-import daiwei.atguigu.chatgroup.service.GroupChatServer;
+import daiwei.atguigu.chatgroup.server.GroupChatServer;
 
 /**
  * Created by Daiwei on 2021/2/21

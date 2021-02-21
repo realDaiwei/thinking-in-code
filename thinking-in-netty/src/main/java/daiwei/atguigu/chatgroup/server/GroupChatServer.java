@@ -1,7 +1,6 @@
-package daiwei.atguigu.chatgroup.service;
+package daiwei.atguigu.chatgroup.server;
 
-import com.sun.tools.hat.internal.parser.HprofReader;
-import daiwei.atguigu.chatgroup.service.handlers.ServerInitHandler;
+import daiwei.atguigu.chatgroup.server.handlers.ServerInitHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;

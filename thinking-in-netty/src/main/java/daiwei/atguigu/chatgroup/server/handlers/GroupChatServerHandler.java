@@ -1,4 +1,4 @@
-package daiwei.atguigu.chatgroup.service.handlers;
+package daiwei.atguigu.chatgroup.server.handlers;
 
 import daiwei.atguigu.chatgroup.util.DateFormatUtil;
 import io.netty.channel.Channel;
@@ -7,8 +7,6 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
-
-import java.text.SimpleDateFormat;
 
 /**
  * Created by Daiwei on 2021/2/21
@@ -61,6 +59,11 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
         Channel channel = ctx.channel();
         String msg = "[客户端 "+ channel.remoteAddress() +"]["+ DateFormatUtil.nowStr() + "] 下线了～";
         System.out.println(msg);
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        ctx.channel().close();
     }
 }
 

@@ -1,4 +1,4 @@
-package daiwei.atguigu.chatgroup.service.handlers;
+package daiwei.atguigu.chatgroup.server.handlers;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
