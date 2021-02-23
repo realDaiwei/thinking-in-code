@@ -1,6 +1,8 @@
 package daiwei.atguigu.basic;
 
 
+import daiwei.atguigu.protobuf.message.SchoolMessage;
+import daiwei.atguigu.protobuf.message.UserMessage;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -9,6 +11,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
 
 /**
  * Created by Daiwei on 2021/1/24
@@ -28,7 +32,8 @@ public class NettyServer {
 
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new NettyServerHandler());
+                            ch.pipeline().addLast(new ProtobufDecoder(SchoolMessage.schoolData.getDefaultInstance()))
+                                    .addLast(new NettyServerHandler());
                         }
                     });
 

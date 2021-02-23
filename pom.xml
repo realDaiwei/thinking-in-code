@@ -26,6 +26,7 @@
         <spring.version>5.2.8.RELEASE</spring.version>
         <jdbc.version>8.0.18</jdbc.version>
         <hikar.version>3.4.5</hikar.version>
+        <proto.version>3.14.0</proto.version>
     </properties>
 
     <dependencyManagement>
@@ -94,6 +95,12 @@
                 <groupId>com.zaxxer</groupId>
                 <artifactId>HikariCP</artifactId>
                 <version>${hikar.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${proto.version}</version>
             </dependency>
 
         </dependencies>

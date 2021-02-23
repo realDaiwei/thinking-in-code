@@ -1,0 +1,29 @@
+syntax="proto3";
+option java_outer_classname="SchoolMessage";
+
+message schoolData {
+
+  enum DataType {
+    studentType = 0;
+    teacherType = 1;
+  }
+
+  DataType data_type = 1;
+
+  oneof body {
+    Student stu = 2;
+    Teacher tea = 3;
+  }
+}
+
+message Student {
+  int64 stuId = 1;
+  string stuName = 2;
+  int32 grade = 3;
+}
+
+message Teacher {
+  int64 teaId = 1;
+  string teaName = 2;
+  string sub = 3;
+}

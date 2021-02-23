@@ -7,6 +7,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
 
 /**
  * Created by Daiwei on 2021/1/24
@@ -21,7 +22,8 @@ public class NettyClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(new NettyClientHandler());
+                            socketChannel.pipeline().addLast(new ProtobufEncoder())
+                                    .addLast(new NettyClientHandler());
                         }
                     });
             ChannelFuture future = bootstrap.connect("127.0.0.1", 8808).sync();
