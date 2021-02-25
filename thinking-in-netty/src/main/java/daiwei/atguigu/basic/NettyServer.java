@@ -42,12 +42,8 @@ public class NettyServer {
             channelFuture.channel().closeFuture().sync();
 
         } finally {
-            if (bossGroup != null) {
-                bossGroup.shutdownGracefully();
-            }
-            if (workerGroup != null) {
-                workerGroup.shutdownGracefully();
-            }
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
         }
 
     }
