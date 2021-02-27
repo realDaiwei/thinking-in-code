@@ -1,52 +1,47 @@
-package daiwei.atguigu.websocket.server;
+package daiwei.atguigu.tcp.server;
 
-import daiwei.atguigu.websocket.handler.MyWebSocketHandler;
+import daiwei.atguigu.inout.client.handler.MyLongToByteEncoder;
+import daiwei.atguigu.inout.server.handler.MyByteToLongDecoder;
+import daiwei.atguigu.inout.server.handler.MyServerInboundHandler;
+import daiwei.atguigu.tcp.client.handler.TcpMessageToByteEncoder;
+import daiwei.atguigu.tcp.server.handler.TcpByteToMessageDecoder;
+import daiwei.atguigu.tcp.server.handler.TcpServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.http.HttpObjectAggregator;
-import io.netty.handler.codec.http.HttpServerCodec;
-import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
-import io.netty.handler.stream.ChunkedWriteHandler;
 
 /**
- * Created by Daiwei on 2021/2/21
+ * 粘包和半粘包
+ * Created by Daiwei on 2021/2/25
  */
-public class WebSocketNettyServer {
+public class TcpNettyServer {
 
     private int port;
 
-    public WebSocketNettyServer(int port) {
+    public TcpNettyServer(int port) {
         this.port = port;
     }
 
     public void run() {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup(4);
-
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
-            bootstrap.option(ChannelOption.SO_BACKLOG, 256);
+//            bootstrap.option(ChannelOption.SO_BACKLOG, 128);
             bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel channel) throws Exception {
                             ChannelPipeline pipeline = channel.pipeline();
-                            pipeline.addLast(new HttpServerCodec())
-                                    .addLast(new ChunkedWriteHandler())
-                                    .addLast(new HttpObjectAggregator(8192))
-                                    .addLast(new WebSocketServerProtocolHandler("/hello"))
-                                    .addLast(new MyWebSocketHandler());
+                            pipeline.addLast(new TcpByteToMessageDecoder())
+                                    .addLast(new TcpMessageToByteEncoder())
+                                    .addLast(new TcpServerHandler());
                         }
                     });
             ChannelFuture future = bootstrap.bind(this.port).sync();
-            System.out.println("web socket Netty server is ready,listen on port["+ port + "]");
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -54,7 +49,5 @@ public class WebSocketNettyServer {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
-
-
     }
 }

@@ -25,7 +25,7 @@ public class InOutBoundNettyServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup(4);
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
-//            bootstrap.option(ChannelOption.SO_BACKLOG, 128);
+            bootstrap.option(ChannelOption.SO_BACKLOG, 128);
             bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
