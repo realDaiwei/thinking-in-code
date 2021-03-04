@@ -27,7 +27,7 @@ public class JdbcUtil {
         Connection cnn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            cnn = DriverManager.getConnection("jdbc:mysql://192.168.199.101:3306/test?characterEncoding=utf-8",
+            cnn = DriverManager.getConnection("jdbc:mysql://192.168.199.101:3306/hello?characterEncoding=utf-8",
                     "root", "daiwei123");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
