@@ -24,12 +24,34 @@ public class JdbcInsertTest {
             String sql = "insert into tb_order_test(good_id, user_id, good_status) values (?, ?, ?)";
             conn.setAutoCommit(false);
             stat = conn.prepareStatement(sql);
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 3000; i++) {
                 stat.setLong(1, i);
                 stat.setLong(2, i);
                 stat.setInt(3, 1);
                 stat.execute();
             }
+            conn.commit();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        System.out.println(System.currentTimeMillis() - start);
+    }
+
+    public void insertSqlBatch() {
+        long start = System.currentTimeMillis();
+        Connection conn = JdbcUtil.getConnFromHikari();
+        PreparedStatement stat = null;
+        try {
+            String sql = "insert into tb_order_test(good_id, user_id, good_status) values (?, ?, ?)";
+            conn.setAutoCommit(false);
+            stat = conn.prepareStatement(sql);
+            for (int i = 0; i < 1000000; i++) {
+                stat.setLong(1, i);
+                stat.setLong(2, i);
+                stat.setInt(3, 1);
+                stat.addBatch();
+            }
+            stat.executeBatch();
             conn.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

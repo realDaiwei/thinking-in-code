@@ -10,6 +10,8 @@ public class TestMain {
 
     public static void main(String[] args) {
         JdbcInsertTest test = new JdbcInsertTest();
+//        test.insertByLoop();
+//        test.insertSqlBatch();
 //        test.insertByBatch(1000);
         test.insertConcurBatch();
     }
