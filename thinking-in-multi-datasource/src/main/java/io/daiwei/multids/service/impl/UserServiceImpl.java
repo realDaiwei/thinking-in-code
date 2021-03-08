@@ -1,6 +1,6 @@
 package io.daiwei.multids.service.impl;
 
-import io.daiwei.multids.annotation.DS;
+import io.daiwei.multids.annotation.*;
 import io.daiwei.multids.mapper.UserMapper;
 import io.daiwei.multids.pojo.User;
 import io.daiwei.multids.service.UserService;

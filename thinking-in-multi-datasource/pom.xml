@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.daiwei</groupId>
-    <artifactId>thinking-in-multiple-datasource</artifactId>
+    <artifactId>thinking-in-multi-datasource</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>thinking-in-multiple-datasource</name>
+    <name>thinking-in-multi-datasource</name>
     <description>multiple datasources for mybatis</description>
     <properties>
         <java.version>1.8</java.version>
