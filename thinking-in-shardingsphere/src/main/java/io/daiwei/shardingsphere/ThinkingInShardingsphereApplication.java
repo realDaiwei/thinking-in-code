@@ -9,5 +9,4 @@ public class ThinkingInShardingsphereApplication {
     public static void main(String[] args) {
         SpringApplication.run(ThinkingInShardingsphereApplication.class, args);
     }
-
 }
