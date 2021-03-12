@@ -26,5 +26,7 @@ class UserServiceImplTest {
 
     @Test
     void insertUser() {
+        User user = new User("daiwei", 24, "shardingspherer");
+        userService.insertUser(user);
     }
 }
