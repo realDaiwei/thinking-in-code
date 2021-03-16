@@ -3,7 +3,26 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.daiwei.shardingtable.mapper.OrderMapper">
+
+    <resultMap id="baseMap" type="io.daiwei.shardingtable.pojo.Order">
+        <id property="orderId" column="order_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="transferId" column="transfer_id" jdbcType="BIGINT"/>
+    </resultMap>
+
     <insert id="insertOrder" parameterType="io.daiwei.shardingtable.pojo.Order">
         insert into t_order(user_id, transfer_id) values (#{userId}, #{transferId});
     </insert>
+
+    <select id="selectById" resultMap="baseMap">
+        select order_id, user_id, transfer_id from t_order where user_id = #{userId};
+    </select>
+
+    <select id="listOrders" resultMap="baseMap">
+        select order_id, user_id, transfer_id from t_order order by order_id asc limit 10;
+    </select>
+
+    <update id="updateByOrderId">
+        update t_order set transfer_id = 666 where order_id = #{orderId};
+    </update>
 </mapper>

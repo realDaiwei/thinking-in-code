@@ -4,7 +4,6 @@ import io.daiwei.shardingtable.mapper.OrderMapper;
 import io.daiwei.shardingtable.pojo.Order;
 import io.daiwei.shardingtable.service.OrderService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,7 +23,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> selectOrder() {
-        return null;
+    public Order selectOrder(Long orderId) {
+        return orderMapper.listOrders(orderId);
+    }
+
+    @Override
+    public List<Order> listOrder() {
+        return orderMapper.listOrders();
+    }
+
+    @Override
+    public void updateByOrderId(Long id) {
+        orderMapper.updateByOrderId(id);
     }
 }

@@ -11,5 +11,9 @@ public interface OrderMapper {
 
     void insertOrder(Order order);
 
-    List<Order> listOrder();
+    Order listOrders(Long id);
+
+    List<Order> listOrders();
+
+    void updateByOrderId(Long orderId);
 }

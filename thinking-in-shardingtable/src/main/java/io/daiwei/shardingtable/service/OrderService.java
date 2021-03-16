@@ -11,5 +11,9 @@ public interface OrderService {
 
     void insertOrder(Order order);
 
-    List<Order> selectOrder();
+    Order selectOrder(Long orderId);
+
+    List<Order> listOrder();
+
+    void updateByOrderId(Long id);
 }
