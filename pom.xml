@@ -15,6 +15,7 @@
         <module>thinking-in-spring-entity</module>
         <module>thinking-in-jdbc</module>
         <module>thinking-in-grpc</module>
+        <module>thinking-in-webservice</module>
     </modules>
 
     <properties>
