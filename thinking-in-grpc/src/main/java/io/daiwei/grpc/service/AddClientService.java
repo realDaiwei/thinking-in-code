@@ -3,7 +3,6 @@ package io.daiwei.grpc.service;
 import io.daiwei.grpc.AddServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import jdk.nashorn.internal.objects.annotations.Getter;
 
 /**
  * Created by Daiwei on 2021/3/16
