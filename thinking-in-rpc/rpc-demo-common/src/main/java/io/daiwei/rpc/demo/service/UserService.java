@@ -7,5 +7,5 @@ import io.daiwei.rpc.demo.pojo.User;
  */
 public interface UserService {
 
-    User findById(Integer id);
+    User findById(int id);
 }
