@@ -1,0 +1,9 @@
+daiwei-starter:
+  datasource:
+    jedis:
+      host: 127.0.0.1
+      password:
+      port: 6379
+      maxIdle: 10
+      minIdle: 3
+      maxTotal: 20
