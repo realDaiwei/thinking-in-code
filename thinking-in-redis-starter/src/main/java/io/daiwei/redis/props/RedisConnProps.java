@@ -5,11 +5,11 @@ import lombok.Data;
 /**
  * Created by Daiwei on 2021/4/6
  */
-public class DefaultRedisConnProps {
+public class RedisConnProps {
 
     private String host;
 
-    private String userName;
+    private String username;
 
     private String password;
 
@@ -23,16 +23,14 @@ public class DefaultRedisConnProps {
 
     private int maxTotal;
 
+    private int timeout;
+
     public String getHost() {
         return host;
     }
 
     public void setHost(String host) {
         this.host = host;
-    }
-
-    public String getUserName() {
-        return userName;
     }
 
     public int getDatabaseIdx() {
@@ -43,8 +41,12 @@ public class DefaultRedisConnProps {
         this.databaseIdx = databaseIdx;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -85,5 +87,13 @@ public class DefaultRedisConnProps {
 
     public void setMaxTotal(int maxTotal) {
         this.maxTotal = maxTotal;
+    }
+
+    public int getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(int timeout) {
+        this.timeout = timeout;
     }
 }

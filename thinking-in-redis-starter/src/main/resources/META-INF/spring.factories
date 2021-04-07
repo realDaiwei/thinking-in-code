@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.daiwei.redis.config.AutoJedisConfiguration
+  io.daiwei.redis.config.JedisConfiguration
