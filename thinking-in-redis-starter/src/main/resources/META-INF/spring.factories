@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.daiwei.redis.config.JedisConfiguration
+  io.daiwei.redis.config.JedisConfiguration, \
+  io.daiwei.redis.config.RedisTemplateConfiguration, \
+  io.daiwei.redis.config.LettuceConfiguration

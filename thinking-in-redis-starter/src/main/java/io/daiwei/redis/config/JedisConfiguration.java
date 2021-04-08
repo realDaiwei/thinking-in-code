@@ -9,6 +9,9 @@ import redis.clients.jedis.JedisPoolConfig;
 
 import javax.annotation.Resource;
 
+
+
+
 /**
  * Created by Daiwei on 2021/4/6
  */
@@ -30,8 +33,10 @@ public class JedisConfiguration {
     @Bean
     @ConditionalOnProperty(prefix = "daiwei-starter.ds.redis", name = "client-type", havingValue = "jedis")
     public JedisPool jedisPool() {
-        return props.getConnProps() != null || props.getConnProps().getPassword() != null ? new JedisPool(jedisPoolConfig(), props.getConnProps().getHost(), props.getConnProps().getPort(), props.getConnProps().getTimeout()) :
-                new JedisPool(jedisPoolConfig(), props.getConnProps().getHost(), props.getConnProps().getPort(), props.getConnProps().getTimeout(), props.getConnProps().getUsername(), props.getConnProps().getPassword(), props.getConnProps().getDatabaseIdx());
+        return props.getConnProps() != null && (props.getConnProps().getPassword() != null && props.getConnProps().getUsername() != null )
+                ? new JedisPool(jedisPoolConfig(), props.getConnProps().getHost(), props.getConnProps().getPort(), props.getConnProps().getTimeout()) :
+                new JedisPool(jedisPoolConfig(), props.getConnProps().getHost(), props.getConnProps().getPort(), props.getConnProps().getTimeout(),
+                        props.getConnProps().getUsername(), props.getConnProps().getPassword(), props.getConnProps().getDatabaseIdx());
     }
 
 }
