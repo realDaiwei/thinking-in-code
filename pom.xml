@@ -21,7 +21,7 @@
         <module>thinking-in-mockito</module>
         <module>thinking-in-redis</module>
         <module>thinking-in-redis-starter</module>
-        <module>commen-entity</module>
+        <module>common-entity</module>
     </modules>
 
     <properties>
@@ -45,6 +45,7 @@
         <mockito.version>2.0.2-beta</mockito.version>
         <jedis.version>3.3.0</jedis.version>
         <junit.version>4.12</junit.version>
+        <lettuce.version>5.1.8.RELEASE</lettuce.version>
     </properties>
 
     <dependencyManagement>
@@ -209,6 +210,12 @@
             </dependency>
 
             <dependency>
+                <groupId>io.lettuce</groupId>
+                <artifactId>lettuce-core</artifactId>
+                <version>${lettuce.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>${mockito.version}</version>
@@ -220,8 +227,6 @@
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
             </dependency>
-
-
         </dependencies>
     </dependencyManagement>
 

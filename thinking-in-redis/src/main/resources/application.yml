@@ -4,8 +4,6 @@ daiwei-starter:
       client-type: redisTemplate
       conn-props:
         host: 127.0.0.1
-#        password:
-#        username:
         port: 6379
         maxIdle: 10
         minIdle: 3
