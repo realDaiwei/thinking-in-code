@@ -21,4 +21,8 @@ public class ReturnT<T> {
         res.setStatus(0);
         return res;
     }
+
+    public static <T> ReturnT<T> ok() {
+        return ok(null);
+    }
 }

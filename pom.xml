@@ -45,7 +45,9 @@
         <mockito.version>2.0.2-beta</mockito.version>
         <jedis.version>3.3.0</jedis.version>
         <junit.version>4.12</junit.version>
-        <lettuce.version>5.1.8.RELEASE</lettuce.version>
+        <lettuce.version>6.1.0.RELEASE</lettuce.version>
+        <redisson.version>3.15.1</redisson.version>
+        <netty.mac.dns.version>4.1.63.Final</netty.mac.dns.version>
     </properties>
 
     <dependencyManagement>
@@ -226,6 +228,16 @@
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-resolver-dns-native-macos</artifactId>
+                <version>${netty.mac.dns.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
