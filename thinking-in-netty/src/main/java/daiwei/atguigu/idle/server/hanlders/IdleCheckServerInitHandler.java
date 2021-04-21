@@ -16,7 +16,7 @@ public class IdleCheckServerInitHandler extends ChannelInitializer<SocketChannel
     @Override
     protected void initChannel(SocketChannel channel) throws Exception {
         ChannelPipeline pipeline = channel.pipeline();
-        pipeline.addLast(new IdleStateHandler(3, 5, 7, TimeUnit.SECONDS))
+        pipeline.addLast(new IdleStateHandler(0, 0, 3, TimeUnit.SECONDS))
                 .addLast(new IdleCheckEventHandler());
     }
 }

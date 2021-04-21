@@ -8,4 +8,8 @@ import io.daiwei.rpc.demo.pojo.User;
 public interface UserService {
 
     User findById(int id);
+
+    void sayHi(String name);
+
+    void crying();
 }

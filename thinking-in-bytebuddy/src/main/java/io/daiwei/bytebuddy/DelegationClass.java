@@ -23,6 +23,7 @@ public class DelegationClass {
         System.out.println(clazz.getClass());
         System.out.println(target.getClass().getName());
         System.out.println(Arrays.toString(args));
+        System.out.println(method.getName());
         System.out.println(method.getReturnType().getName());
         return User.builder().userName("daiwei666").age(26).id(2).build();
     }

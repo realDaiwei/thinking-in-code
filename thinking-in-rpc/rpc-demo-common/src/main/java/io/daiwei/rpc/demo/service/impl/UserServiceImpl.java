@@ -13,4 +13,14 @@ public class UserServiceImpl implements UserService {
         return User.builder().id(1).userName("daiwei").age(25).build();
     }
 
+    @Override
+    public void sayHi(String name) {
+        System.out.println("hi " + name + " ~");
+    }
+
+    @Override
+    public void crying() {
+        System.out.println("wuwuwuwu!!!");
+    }
+
 }
