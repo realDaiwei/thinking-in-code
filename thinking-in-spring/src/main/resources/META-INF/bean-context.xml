@@ -25,4 +25,11 @@
 
     <context:component-scan base-package="io.daiwei.springbean"/>
 
+    <bean id="spring-bean" class="io.daiwei.field.SpringBean">
+        <property name="beanName" value="test"/>
+    </bean>
+
+    <bean class="io.daiwei.springbean.entity.Student" destroy-method="destroy"/>
+
+
 </beans>

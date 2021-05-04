@@ -1,6 +1,7 @@
 package io.daiwei;
 
 import io.daiwei.service.UserServiceImpl;
+import org.apache.curator.CuratorZookeeperClient;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -21,28 +22,28 @@ public class ZookeeperTestMain {
 
     private static CuratorFramework client;
 
-    public static void main(String[] args) {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            client.close();
-        }));
+    public static void main(String[] args) throws Exception {
+//        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+//            client.close();
+//        }));
 
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("close");
-        }));
+//        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+//            System.out.println("close");
+//        }));
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         client = CuratorFrameworkFactory.builder().connectString("localhost:2181").namespace("zk-demo").retryPolicy(retryPolicy).build();
         client.start();
-        CuratorCache cache = CuratorCache.builder(client, File.separator).build();
-        CuratorCacheListener listener = CuratorCacheListener.builder().forPathChildrenCache(File.separator, client, new PathChildrenCacheListener() {
-            @Override
-            public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
-                System.out.println("wa!!!");
-            }
-        }).forInitialized(() -> {
-            System.out.println("init");
-        }).build();
-        cache.listenable().addListener(listener);
-        cache.start();
+//        CuratorCache cache = CuratorCache.builder(client, File.separator).build();
+//        CuratorCacheListener listener = CuratorCacheListener.builder().forPathChildrenCache(File.separator, client, new PathChildrenCacheListener() {
+//            @Override
+//            public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+//                System.out.println("wa!!!");
+//            }
+//        }).forInitialized(() -> {
+//            System.out.println("init");
+//        }).build();
+//        cache.listenable().addListener(listener);
+//        cache.start();
         try {
             client.create().withMode(CreateMode.EPHEMERAL).forPath("/" + UserServiceImpl.class.getCanonicalName());
 //            client.getChildren().usingWatcher((Watcher) watchedEvent -> {
@@ -53,7 +54,10 @@ public class ZookeeperTestMain {
         }
 
         System.out.println("hello");
-        while (true) {}
+//        while (true) {}
+//        cache.close();
+//        client.getZookeeperClient().getZooKeeper().close();
+        client.close();
     }
 
 

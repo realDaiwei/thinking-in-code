@@ -23,6 +23,11 @@
         <module>thinking-in-redis-starter</module>
         <module>common-entity</module>
         <module>thinking-zookeeper</module>
+        <module>thinking-in-something</module>
+        <module>thinking-in-spi</module>
+        <module>thinking-in-spi-module</module>
+        <module>thinking-in-spi-demo</module>
+        <module>thinking-in-spi-common</module>
     </modules>
 
     <properties>
@@ -50,6 +55,7 @@
         <redisson.version>3.15.1</redisson.version>
         <netty.mac.dns.version>4.1.63.Final</netty.mac.dns.version>
         <zk.curator.version>5.1.0</zk.curator.version>
+        <oshi.version>3.4.0</oshi.version>
     </properties>
 
     <dependencyManagement>
@@ -258,6 +264,14 @@
                 <artifactId>curator-recipes</artifactId>
                 <version>${zk.curator.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.github.dblock</groupId>
+                <artifactId>oshi-core</artifactId>
+                <version>${oshi.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
