@@ -26,8 +26,8 @@
         <module>thinking-in-something</module>
         <module>thinking-in-spi</module>
         <module>thinking-in-spi-module</module>
-        <module>thinking-in-spi-demo</module>
         <module>thinking-in-spi-common</module>
+        <module>thinking-in-jvm</module>
     </modules>
 
     <properties>
@@ -56,6 +56,7 @@
         <netty.mac.dns.version>4.1.63.Final</netty.mac.dns.version>
         <zk.curator.version>5.1.0</zk.curator.version>
         <oshi.version>3.4.0</oshi.version>
+        <jol.version>0.15</jol.version>
     </properties>
 
     <dependencyManagement>
@@ -271,6 +272,11 @@
                 <version>${oshi.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.openjdk.jol</groupId>
+                <artifactId>jol-core</artifactId>
+                <version>${jol.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

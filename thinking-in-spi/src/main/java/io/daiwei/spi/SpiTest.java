@@ -2,7 +2,6 @@ package io.daiwei.spi;
 
 import io.daiwei.spi.service.Person;
 
-import java.util.Iterator;
 import java.util.ServiceLoader;
 
 /**
@@ -12,9 +11,7 @@ public class SpiTest {
 
     public void test() {
         ServiceLoader<Person> load = ServiceLoader.load(Person.class);
-        Iterator<Person> iterator = load.iterator();
-        while (iterator.hasNext()) {
-            Person next = iterator.next();
+        for (Person next : load) {
             next.eat("nice beef!");
         }
     }
