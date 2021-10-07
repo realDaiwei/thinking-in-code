@@ -11,4 +11,8 @@ public class B {
 
     private boolean b;
 
+    @Override
+    public int hashCode() {
+        return super.hashCode() + 1;
+    }
 }

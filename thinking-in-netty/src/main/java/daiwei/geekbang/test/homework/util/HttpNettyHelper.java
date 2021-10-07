@@ -19,7 +19,6 @@ public class HttpNettyHelper {
         return genBaseResp(unAuthJson.getBytes(StandardCharsets.UTF_8));
     }
 
-
     public static DefaultFullHttpResponse genBaseResp(byte[] bytes) {
         DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK,
                 Unpooled.wrappedBuffer(bytes));

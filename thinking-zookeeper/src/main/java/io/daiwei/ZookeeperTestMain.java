@@ -14,6 +14,7 @@ import org.apache.zookeeper.Watcher;
 import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Daiwei on 2021/4/17
@@ -33,30 +34,31 @@ public class ZookeeperTestMain {
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         client = CuratorFrameworkFactory.builder().connectString("localhost:2181").namespace("zk-demo").retryPolicy(retryPolicy).build();
         client.start();
-//        CuratorCache cache = CuratorCache.builder(client, File.separator).build();
-//        CuratorCacheListener listener = CuratorCacheListener.builder().forPathChildrenCache(File.separator, client, new PathChildrenCacheListener() {
-//            @Override
-//            public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
-//                System.out.println("wa!!!");
-//            }
-//        }).forInitialized(() -> {
-//            System.out.println("init");
-//        }).build();
-//        cache.listenable().addListener(listener);
-//        cache.start();
-        try {
-            client.create().withMode(CreateMode.EPHEMERAL).forPath("/" + UserServiceImpl.class.getCanonicalName());
+        CuratorCache cache = CuratorCache.builder(client, File.separator).build();
+        CuratorCacheListener listener = CuratorCacheListener.builder().forPathChildrenCache(File.separator, client, new PathChildrenCacheListener() {
+            @Override
+            public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+                System.out.println("wa!!!");
+            }
+        }).forInitialized(() -> {
+            System.out.println("init");
+        }).build();
+        cache.listenable().addListener(listener);
+        cache.start();
+//        try {
+//            client.create().withMode(CreateMode.PERSISTENT).forPath("/" + UserServiceImpl.class.getCanonicalName());
 //            client.getChildren().usingWatcher((Watcher) watchedEvent -> {
 //                System.out.println("watch!");
 //            }).forPath("/");
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+//        } catch (Exception exception) {
+//            exception.printStackTrace();
+//        }
 
         System.out.println("hello");
 //        while (true) {}
 //        cache.close();
 //        client.getZookeeperClient().getZooKeeper().close();
+        TimeUnit.SECONDS.sleep(3000);
         client.close();
     }
 

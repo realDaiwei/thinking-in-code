@@ -29,6 +29,9 @@ public class HelloTestMain {
                 .make().load(HelloTestMain.class.getClassLoader())
                 .getLoaded().newInstance();
         User byId = userService.findById(1);
+//        UserServiceImpl userService = new ByteBuddy().subclass(UserServiceImpl.class).method(ElementMatchers.any()).intercept(Advice.to(LogAdvice.class))
+//                .make().load(HelloTestMain.class.getClassLoader()).getLoaded().newInstance();
+//        userService.crying();
         System.out.println(byId);
     }
 }

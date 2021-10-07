@@ -28,7 +28,7 @@ public class NettyGateWayServer {
     public NettyGateWayServer(Integer port, List<String> proxyServers) {
         this.port = port != null ? port : DEFAULT_PORT;
         if (proxyServers == null || proxyServers.size() == 0) {
-            throw new RuntimeException("gateway need at least one proxy server!");
+            throw new RuntimeException("gateway need at least one server instance!");
         }
         this.proxyServers = proxyServers;
     }

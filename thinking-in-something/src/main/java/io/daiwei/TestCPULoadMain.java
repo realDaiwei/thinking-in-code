@@ -30,7 +30,7 @@ public class TestCPULoadMain {
             long totalCpu = user + nice + cSys + idle + iowait + irq + softirq ;
 
             System.out.println("CPU总数 = " + processor.getLogicalProcessorCount() + ",CPU利用率 = " + new DecimalFormat("#.##%").format(1.0-(idle * 1.0 / totalCpu)));
-//            Thread.sleep(1000);
+            Thread.sleep(1000);
         }
     }
 

@@ -13,6 +13,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import java.util.List;
 
 /**
+ * childHandler 实现
  * Created by Daiwei on 2021/1/25
  */
 public class MyHttpInitializer extends ChannelInitializer<SocketChannel> {

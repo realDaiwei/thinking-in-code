@@ -29,8 +29,8 @@ public class ClazzTestMain {
 //        Method[] methods = instance.getClass().getMethods();
         System.out.println(instance.getClass().getName());
 //        System.out.println(String.join(",", Stream.of(methods).map(Method::getName).collect(Collectors.toList())));
-        Method findById = instance.getClass().getMethod("crying", new Class[]{});
-        System.out.println(findById.invoke(instance, new Object[]{}));
+        Method findById = instance.getClass().getMethod("findById", int.class);
+        System.out.println(findById.invoke(instance, new Object[]{1}));
 //        instance
     }
 }

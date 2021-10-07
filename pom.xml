@@ -24,10 +24,12 @@
         <module>common-entity</module>
         <module>thinking-zookeeper</module>
         <module>thinking-in-something</module>
+        <module>thinking-in-springboot</module>
         <module>thinking-in-spi</module>
         <module>thinking-in-spi-module</module>
         <module>thinking-in-spi-common</module>
         <module>thinking-in-jvm</module>
+        <module>thinking-in-network</module>
     </modules>
 
     <properties>

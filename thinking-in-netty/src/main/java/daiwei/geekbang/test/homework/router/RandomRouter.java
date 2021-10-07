@@ -17,6 +17,6 @@ public class RandomRouter extends HttpRouter {
 
     @Override
     public String route() {
-        return this.proxyServers.get(this.rdn.nextInt(3));
+        return this.proxyServers.get(this.rdn.nextInt(proxyServers.size()));
     }
 }

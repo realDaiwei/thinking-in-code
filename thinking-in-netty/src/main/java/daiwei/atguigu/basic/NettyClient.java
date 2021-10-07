@@ -26,7 +26,7 @@ public class NettyClient {
                                     .addLast(new NettyClientHandler());
                         }
                     });
-            ChannelFuture future = bootstrap.connect("127.0.0.1", 8087).sync();
+            ChannelFuture future = bootstrap.connect("127.0.0.1", 8080).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
