@@ -7,6 +7,11 @@ import (
 	"net/http"
 )
 
+type Login struct {
+	User     string `form:"user" json:"user" binding:"required"`
+	Password string `form:"password" json:"password" binding:"required"`
+}
+
 func main() {
 	r := gin.Default()
 	r.GET("/user", func(c *gin.Context) {
@@ -29,6 +34,32 @@ func main() {
 		}
 		fmt.Printf("request body: %#v\n", m)
 		c.JSON(http.StatusOK, m)
+	})
+
+	// 使用 shouldBind 绑定json/form数据
+	r.POST("/login-bind", func(c *gin.Context) {
+		var l Login
+		if err := c.ShouldBind(&l); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"err": err.Error()})
+		} else {
+			c.JSON(http.StatusOK, gin.H{
+				"user":     l.User,
+				"password": l.Password,
+			})
+		}
+	})
+
+	// 使用 shouldBind 绑定 query 数据
+	r.GET("/login-bind", func(c *gin.Context) {
+		var l Login
+		if err := c.ShouldBind(&l); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"err": err.Error()})
+		} else {
+			c.JSON(http.StatusOK, gin.H{
+				"user":     l.User,
+				"password": l.Password,
+			})
+		}
 	})
 
 	err := r.Run(":8090")
